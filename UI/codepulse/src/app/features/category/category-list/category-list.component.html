@@ -1,5 +1,6 @@
 <div class="container">
-    <h1 class="mt-3">Category List</h1>
+    <h1 class="mt-3">Users List</h1>
+    <h5 class="mt-2">To exchange subscriptions, follow the user's links and click 'ExSub'. This will automatically message them asking do the same to you.  Wait a couple of days, then rate them if you'd like.</h5>
     <div class="d-flex justify-content-end mt-3">
         <a [routerLink]="['/admin/categories/add']" class="btn btn-primary">Add Category</a>
     </div>
@@ -8,9 +9,9 @@
         <table class="table table-bordered mt-3">
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>UrlHandle</th>
+                    <th>Users</th>
+                    <th>Url1</th>
+                    <th>Url2</th>
                     <th></th>
                 </tr>
             </thead>
@@ -20,8 +21,12 @@
                     <td>{{category.name}}</td>
                     <td>{{category.urlHandle}}</td>
                     <td>
-                        <a class="btn btn-light" [routerLink]="['/admin/categories',category.id]">Edit</a>
+                        <a class="btn btn-primary" [routerLink]="['/admin/categories',category.id]">ExSub</a>
+                        
                     </td>
+                    <td> <app-star-rating [rating]="4"></app-star-rating></td>
+                   
+                   
 
                 </tr>
             </tbody>
