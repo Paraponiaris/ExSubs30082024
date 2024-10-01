@@ -2,14 +2,18 @@ using CodePulse.API.Data;
 using CodePulse.API.Repositories.Interface;
 using CodePulse.API.Repositories.Implementation;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure services
 builder.Services.AddControllers();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
 
 // Add database context
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -18,6 +22,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 builder.Services.AddScoped<ICategoryRepository,CategoryRepository>();
+builder.Services.AddScoped<IBlogPostRepository, BlogPostRepository>();
+builder.Services.AddScoped<IImageRepository, ImageRepository>();
+
+
+
+
+
 
 var app = builder.Build();
 
